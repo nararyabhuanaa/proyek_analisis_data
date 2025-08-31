@@ -58,7 +58,7 @@ st.pyplot(fig)
 st.subheader("Bike Rental Customer Chart")
 fig2, ax2 = plt.subplots(figsize=(7, 5))
 
-day = pd.read_csv("main_data.csv")
+day = pd.read_csv("https://raw.githubusercontent.com/nararyabhuanaa/proyek_analisis_data/refs/heads/main/dasboard/main_data.csv")
 day["dteday"] = pd.to_datetime(day["dteday"])
 day_last_60 = day.sort_values("dteday").tail(60)
 
