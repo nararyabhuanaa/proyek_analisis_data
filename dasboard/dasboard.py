@@ -36,8 +36,10 @@ try:
         )
 except: pass
 
-mainan_df = main_df[(main_df["dteday"] >= str(start_date)) & 
-                (main_df["dteday"] <= str(end_date))]
+try:
+    mainan_df = main_df[(main_df["dteday"] >= str(start_date)) & 
+                    (main_df["dteday"] <= str(end_date))]
+except: pass
 
 st.header('Bike Rental')
 st.subheader("Peak Bike Rental Seasons")
@@ -47,7 +49,6 @@ fig, ax = plt.subplots(figsize=(7, 5))
  
 max_val = peakbiker["Jumlah"].max()
 colors = ["#72BCD4" if val == max_val else "#D3D3D3" for val in peakbiker["Jumlah"].head(4)]
-# colors = colors = ["#D3D3D3", "#D3D3D3", "#D3D3D3", "#72BCD4"]
  
 sns.barplot(x="Musim", y="Jumlah", data=peakbiker.head(4), palette=colors, ax=ax)
 ax.set_yticks(peakbiker["Jumlah"].head(4))
@@ -69,8 +70,6 @@ sns.lineplot(x="dteday", y="cnt", data=day_last_60, ax=ax2)
 ax2.set_title("Jumlah Pelanggan Penyewa Sepeda (60 Hari Terakhir)")
 ax2.set_xlabel("Tanggal")
 ax2.set_ylabel("Jumlah Pelanggan")
-
-# Rotasi label tanggal
 plt.setp(ax2.get_xticklabels(), rotation=45)
 
 st.pyplot(fig2)
