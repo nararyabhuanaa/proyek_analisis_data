@@ -5,6 +5,8 @@ import streamlit as st
 from babel.numbers import format_currency
 sns.set(style='dark')
 
+# tlg
+
 def peakbike():
     musim_name = ('Springer', 'Summer', 'Fall', 'Winter')
     musim = (471348, 918589, 1061129, 841613)
