@@ -5,8 +5,6 @@ import streamlit as st
 from babel.numbers import format_currency
 sns.set(style='dark')
 
-# tlg
-
 def peakbike():
     musim_name = ('Springer', 'Summer', 'Fall', 'Winter')
     musim = (471348, 918589, 1061129, 841613)
@@ -15,7 +13,7 @@ def peakbike():
 
     return peakk
 
-main_df = pd.read_csv("main_data.csv")
+main_df = pd.read_csv("https://raw.githubusercontent.com/nararyabhuanaa/proyek_analisis_data/refs/heads/main/dasboard/main_data.csv")
 
 datetime_columns = ["dteday"]
 main_df.sort_values(by="dteday", inplace=True)
