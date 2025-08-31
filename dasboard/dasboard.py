@@ -25,14 +25,16 @@ for column in datetime_columns:
 min_date = main_df["dteday"].min()
 max_date = main_df["dteday"].max()
 
-with st.sidebar:
-    st.image("https://i.postimg.cc/4N3JY6bP/bikerental.png")
-    
-    start_date, end_date = st.date_input(
-        label='Rentang Waktu',min_value=min_date,
-        max_value=max_date,
-        value=[min_date, max_date]
-    )
+try:
+    with st.sidebar:
+        st.image("https://i.postimg.cc/4N3JY6bP/bikerental.png")
+        
+        start_date, end_date = st.date_input(
+            label='Rentang Waktu',min_value=min_date,
+            max_value=max_date,
+            value=[min_date, max_date]
+        )
+except: pass
 
 mainan_df = main_df[(main_df["dteday"] >= str(start_date)) & 
                 (main_df["dteday"] <= str(end_date))]
