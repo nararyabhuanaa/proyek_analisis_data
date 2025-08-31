@@ -32,34 +32,20 @@ try:
     season_map = {1: "Spring", 2: "Summer", 3: "Fall", 4: "Winter"}
     mainan_df["Musim"] = mainan_df["season"].map(season_map)
 
-    # Hitung total penyewaan per musim
-    peakbiker = (
-        mainan_df.groupby("Musim", as_index=False)["cnt"]
-        .sum()
-        .rename(columns={"cnt": "Jumlah"})
-    )
+    peakbiker = mainan_df.groupby("Musim", as_index=False)["cnt"].sum().rename(columns={"cnt": "Jumlah"})
 
-    # Plot
     fig, ax = plt.subplots(figsize=(7, 5))
 
-    # Highlight bar dengan nilai tertinggi
     max_val = peakbiker["Jumlah"].max()
     colors = ["#72BCD4" if val == max_val else "#D3D3D3" for val in peakbiker["Jumlah"]]
 
     sns.barplot(x="Musim", y="Jumlah", data=peakbiker, palette=colors, ax=ax)
-
-    # Judul & label sumbu
     ax.set_ylabel("Jumlah Penyewaan Sepeda", fontsize=12)
     ax.set_xlabel("Musim", fontsize=12)
     ax.set_title("Perbandingan Minat Penyewaan Sepeda Antar Musim", fontsize=16)
 
-    # Tambahkan angka di atas bar
     for i, val in enumerate(peakbiker["Jumlah"]):
         ax.text(i, val + (val*0.02), f"{val:,}", ha='center', va='bottom', fontsize=10)
-
-    # Hilangkan grid & spines kanan/atas → mirip contoh sebelumnya
-    ax.grid(False)
-    sns.despine()
 
     st.pyplot(fig)
 
