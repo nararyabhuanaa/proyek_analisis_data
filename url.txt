@@ -1,1 +1,1 @@
-https://share.streamlit.io/
+https://proyek-data.streamlit.app/
