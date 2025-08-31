@@ -56,7 +56,7 @@ try:
     fig2, ax2 = plt.subplots(figsize=(7, 5))
     sns.lineplot(x="dteday", y="cnt", data=day_last_60, ax=ax2)
 
-    ax2.set_title("Jumlah Pelanggan Penyewa Sepeda", fontsize=14)
+    ax2.set_title("Jumlah Pelanggan Penyewa Sepeda Dua Bulan Terakhir", fontsize=14)
     ax2.set_xlabel("Tanggal", fontsize=12)
     ax2.set_ylabel("Jumlah Pelanggan", fontsize=12)
     plt.setp(ax2.get_xticklabels(), rotation=45)
